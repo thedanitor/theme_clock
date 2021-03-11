@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:300&display=swap');
+
+* {
+    /* width not affected by padding or border */
+    box-sizing: border-box;
+}
+
+/* custom properties */
+:root {
+    --primary-color: #000;
+    --secondary-color: #fff;
+}
+
+html {
+    /* 0.5s transition for all props on html  */
+    transition: all 0.5s ease-in;
+}
+
+/* when html has dark class change custom props  */
+html.dark {
+    --primary-color: #fff;
+    --secondary-color: #333;
+}
+
+/* html w/ dark class */
+html.dark {
+    background-color: #111;
+    color: var(--primary-color);
+}
+
+body {
+    font-family: "Heebo", sans-serif;
+    display: flex;
+    /* Centered horizontally */
+    align-items: center; 
+    /* Centered vertically on 100% viewport */
+    justify-content: center;
+    /* 100% viewport height  */
+    height: 100vh;
+    /* don't want scrollbars  */
+    overflow: hidden;
+    /* no margins  */
+    margin: 0;
+}
+
+/* toggle button */
+.toggle {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    /* pointer when hover  */
+    cursor: pointer;
+    /* no border */
+    border: 0;
+    /* rounded corners  */
+    border-radius: 4px;
+    /* top,bottom | sides  */
+    padding: 8px 12px;
+    position: absolute;
+    /* 100 px from top of body */
+    top: 100px;
+}
+
+.toggle:focus {
+    outline: none;
+    opacity: 0.5;
+}
+
+.clock-container {
+    display: flex;
+    /* content stacked vertically */
+    flex-direction: column;
+    /* horizontally spaced evenly between elements */
+    justify-content: space-between;
+    /* vertical center  */
+    align-items: center;
+}
+
+.clock {
+    position: relative;
+    width: 200px;
+    height: 200px;
+
+    background-color: #f0f0f0;
+}
+
+.needle {
+    background-color: var(--primary-color);
+    position: absolute;
+    /* 50% down from top and 50% right from left */
+    top: 50%;
+    left: 50%;
+    /* needle length */
+    height: 65px;
+    /* needle width */
+    width: 3px;
+    /* sets origin for where rotate transition is applied */
+    transform-origin: bottom center;
+}
+
+.needle.hour {
+    /* move 50% left (to center it) and 100% up to put it at 12:00 position */
+    /* start with rotate at 0deg */
+    transform: translate(-50%, -100%) rotate(0deg);
+}
+
+.needle.minute {
+    /* move 50% left (to center it) and 100% up to put it at 12:00 position */
+    /* start with rotate at 0deg */
+    transform: translate(-50%, -100%) rotate(0deg);
+    /* minute hand longer than hour */
+    height: 100px;
+}
+
+.needle.second {
+    /* move 50% left (to center it) and 100% up to put it at 12:00 position */
+    /* start with rotate at 0deg */
+    transform: translate(-50%, -100%) rotate(0deg);
+    /* second hand longer than hour */
+    height: 100px;
+    /* second hand red */
+    background-color: #e74c3c;
+}
