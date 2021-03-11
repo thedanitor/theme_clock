@@ -79,8 +79,6 @@ body {
     position: relative;
     width: 200px;
     height: 200px;
-
-    background-color: #f0f0f0;
 }
 
 .needle {
@@ -119,4 +117,71 @@ body {
     height: 100px;
     /* second hand red */
     background-color: #e74c3c;
+}
+
+/* circle in center of hands */
+.center-point {
+    /* same color as second hand  */
+    background-color: #e74c3c;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    /* 50% down from top and 50% right from left */
+    top: 50%;
+    left: 50%;
+    /* move 50% left and 50% up to center  */
+    transform: translate(-50%, -50%);
+    /* make circle */
+    border-radius: 50%;
+}
+
+/* small dot inside circle in center of hands */
+.center-point::after {
+    /* need content for ::after */
+    content: "";
+    background-color: var(--primary-color);
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    /* 50% down from top and 50% right from left */
+    top: 50%;
+    left: 50%;
+    /* move 50% left and 50% up to center  */
+    transform: translate(-50%, -50%);
+    /* make circle */
+    border-radius: 50%;
+}
+
+.time {
+    font-size: 60px;
+}
+
+.date {
+    color: #aaa;
+    font-size: 18px;
+    /* 0.3px between characters */
+    letter-spacing: 0.3px;
+    /* all caps */
+    text-transform: uppercase;
+}
+
+/* day only  */
+.date .circle {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    /* circular */
+    border-radius: 50%;
+    /* he had height, width at 18px w/ font 12px, but I like this better */
+    height: 25px;
+    width: 25px;
+    /* font-size: 12px; */
+    /* makes it a flex container but inline  */
+    display: inline-flex;
+    /* Centered horizontally */
+    align-items: center; 
+    /* Centered vertically on 100% viewport */
+    justify-content: center;
+    line-height: 18px;
+    /* 0.5s transition on all (color, bg-color) */
+    transition: all 0.5s ease-in;
 }
