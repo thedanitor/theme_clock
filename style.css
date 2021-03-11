@@ -1,187 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:300&display=swap");
 
 * {
-    /* width not affected by padding or border */
-    box-sizing: border-box;
+  /* width not affected by padding or border */
+  box-sizing: border-box;
 }
 
 /* custom properties */
 :root {
-    --primary-color: #000;
-    --secondary-color: #fff;
+  --primary-color: #000;
+  --secondary-color: #fff;
 }
 
 html {
-    /* 0.5s transition for all props on html  */
-    transition: all 0.5s ease-in;
+  /* 0.5s transition for all props on html  */
+  transition: all 0.5s ease-in;
 }
 
 /* when html has dark class change custom props  */
 html.dark {
-    --primary-color: #fff;
-    --secondary-color: #333;
+  --primary-color: #fff;
+  --secondary-color: #333;
 }
 
 /* html w/ dark class */
 html.dark {
-    background-color: #111;
-    color: var(--primary-color);
+  background-color: #111;
+  color: var(--primary-color);
 }
 
 body {
-    font-family: "Heebo", sans-serif;
-    display: flex;
-    /* Centered horizontally */
-    align-items: center; 
-    /* Centered vertically on 100% viewport */
-    justify-content: center;
-    /* 100% viewport height  */
-    height: 100vh;
-    /* don't want scrollbars  */
-    overflow: hidden;
-    /* no margins  */
-    margin: 0;
+  font-family: "Heebo", sans-serif;
+  display: flex;
+  /* Centered horizontally */
+  align-items: center;
+  /* Centered vertically on 100% viewport */
+  justify-content: center;
+  /* 100% viewport height  */
+  height: 100vh;
+  /* don't want scrollbars  */
+  overflow: hidden;
+  /* no margins  */
+  margin: 0;
 }
 
 /* toggle button */
 .toggle {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    /* pointer when hover  */
-    cursor: pointer;
-    /* no border */
-    border: 0;
-    /* rounded corners  */
-    border-radius: 4px;
-    /* top,bottom | sides  */
-    padding: 8px 12px;
-    position: absolute;
-    /* 100 px from top of body */
-    top: 100px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  /* pointer when hover  */
+  cursor: pointer;
+  /* no border */
+  border: 0;
+  /* rounded corners  */
+  border-radius: 4px;
+  /* top,bottom | sides  */
+  padding: 8px 12px;
+  position: absolute;
+  /* 100 px from top of body */
+  top: 100px;
 }
 
 .toggle:focus {
-    outline: none;
-    opacity: 0.5;
+  outline: none;
+  opacity: 0.5;
 }
 
 .clock-container {
-    display: flex;
-    /* content stacked vertically */
-    flex-direction: column;
-    /* horizontally spaced evenly between elements */
-    justify-content: space-between;
-    /* vertical center  */
-    align-items: center;
+  display: flex;
+  /* content stacked vertically */
+  flex-direction: column;
+  /* horizontally spaced evenly between elements */
+  justify-content: space-between;
+  /* vertical center  */
+  align-items: center;
 }
 
 .clock {
-    position: relative;
-    width: 200px;
-    height: 200px;
+  position: relative;
+  width: 200px;
+  height: 200px;
 }
 
 .needle {
-    background-color: var(--primary-color);
-    position: absolute;
-    /* 50% down from top and 50% right from left */
-    top: 50%;
-    left: 50%;
-    /* needle length */
-    height: 65px;
-    /* needle width */
-    width: 3px;
-    /* sets origin for where rotate transition is applied */
-    transform-origin: bottom center;
+  background-color: var(--primary-color);
+  position: absolute;
+  /* 50% down from top and 50% right from left */
+  top: 50%;
+  left: 50%;
+  /* needle length */
+  height: 65px;
+  /* needle width */
+  width: 3px;
+  /* sets origin for where rotate transition is applied */
+  transform-origin: bottom center;
+  /* 0.5s transition on all (rotate, translate) */
+  transition: all 0.5s ease-in;
 }
 
 .needle.hour {
-    /* move 50% left (to center it) and 100% up to put it at 12:00 position */
-    /* start with rotate at 0deg */
-    transform: translate(-50%, -100%) rotate(0deg);
+  /* move 50% left (to center it) and 100% up to put it at 12:00 position */
+  /* start with rotate at 0deg */
+  transform: translate(-50%, -100%) rotate(0deg);
 }
 
 .needle.minute {
-    /* move 50% left (to center it) and 100% up to put it at 12:00 position */
-    /* start with rotate at 0deg */
-    transform: translate(-50%, -100%) rotate(0deg);
-    /* minute hand longer than hour */
-    height: 100px;
+  /* move 50% left (to center it) and 100% up to put it at 12:00 position */
+  /* start with rotate at 0deg */
+  transform: translate(-50%, -100%) rotate(0deg);
+  /* minute hand longer than hour */
+  height: 100px;
 }
 
 .needle.second {
-    /* move 50% left (to center it) and 100% up to put it at 12:00 position */
-    /* start with rotate at 0deg */
-    transform: translate(-50%, -100%) rotate(0deg);
-    /* second hand longer than hour */
-    height: 100px;
-    /* second hand red */
-    background-color: #e74c3c;
+  /* move 50% left (to center it) and 100% up to put it at 12:00 position */
+  /* start with rotate at 0deg */
+  transform: translate(-50%, -100%) rotate(0deg);
+  /* second hand longer than hour */
+  height: 100px;
+  /* second hand red */
+  background-color: #e74c3c;
 }
 
 /* circle in center of hands */
 .center-point {
-    /* same color as second hand  */
-    background-color: #e74c3c;
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    /* 50% down from top and 50% right from left */
-    top: 50%;
-    left: 50%;
-    /* move 50% left and 50% up to center  */
-    transform: translate(-50%, -50%);
-    /* make circle */
-    border-radius: 50%;
+  /* same color as second hand  */
+  background-color: #e74c3c;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  /* 50% down from top and 50% right from left */
+  top: 50%;
+  left: 50%;
+  /* move 50% left and 50% up to center  */
+  transform: translate(-50%, -50%);
+  /* make circle */
+  border-radius: 50%;
 }
 
 /* small dot inside circle in center of hands */
 .center-point::after {
-    /* need content for ::after */
-    content: "";
-    background-color: var(--primary-color);
-    width: 5px;
-    height: 5px;
-    position: absolute;
-    /* 50% down from top and 50% right from left */
-    top: 50%;
-    left: 50%;
-    /* move 50% left and 50% up to center  */
-    transform: translate(-50%, -50%);
-    /* make circle */
-    border-radius: 50%;
+  /* need content for ::after */
+  content: "";
+  background-color: var(--primary-color);
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  /* 50% down from top and 50% right from left */
+  top: 50%;
+  left: 50%;
+  /* move 50% left and 50% up to center  */
+  transform: translate(-50%, -50%);
+  /* make circle */
+  border-radius: 50%;
 }
 
 .time {
-    font-size: 60px;
+  font-size: 60px;
 }
 
 .date {
-    color: #aaa;
-    font-size: 18px;
-    /* 0.3px between characters */
-    letter-spacing: 0.3px;
-    /* all caps */
-    text-transform: uppercase;
+  color: #aaa;
+  font-size: 18px;
+  /* 0.3px between characters */
+  letter-spacing: 0.3px;
+  /* all caps */
+  text-transform: uppercase;
 }
 
 /* day only  */
 .date .circle {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    /* circular */
-    border-radius: 50%;
-    /* he had height, width at 18px w/ font 12px, but I like this better */
-    height: 25px;
-    width: 25px;
-    /* font-size: 12px; */
-    /* makes it a flex container but inline  */
-    display: inline-flex;
-    /* Centered horizontally */
-    align-items: center; 
-    /* Centered vertically on 100% viewport */
-    justify-content: center;
-    line-height: 18px;
-    /* 0.5s transition on all (color, bg-color) */
-    transition: all 0.5s ease-in;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  /* circular */
+  border-radius: 50%;
+  /* he had height, width at 18px w/ font 12px, but I like this better */
+  height: 25px;
+  width: 25px;
+  /* font-size: 12px; */
+  /* makes it a flex container but inline  */
+  display: inline-flex;
+  /* Centered horizontally */
+  align-items: center;
+  /* Centered vertically on 100% viewport */
+  justify-content: center;
+  line-height: 18px;
+  /* 0.5s transition on all (color, bg-color) */
+  transition: all 0.5s ease-in;
 }
